@@ -1,0 +1,25 @@
+
+In Task 4, we used RSA to create a Digital Signature. This process provides two critical security guarantees: Authenticity and Integrity.
+
+The Mechanism
+
+Hashing (The Fingerprint):
+First, the sender (Alice) calculates a cryptographic hash (SHA-256) of the original message. This hash acts as a unique fingerprint of the data.
+
+Signing (Encryption with Private Key):
+Alice then encrypts this hash using her RSA Private Key.
+
+Key Concept: Only Alice possesses her Private Key. Therefore, only Alice could have created this specific encrypted hash.
+
+Verification (Decryption with Public Key):
+The receiver (Bob) receives the message and the signature. He uses Alice's RSA Public Key to decrypt the signature.
+
+Success: If the decryption works and reveals a hash, it mathematically proves that the signature was created by the corresponding Private Key (Alice's).
+
+Failure: If the signature cannot be decrypted with Alice's Public Key, it was created by someone else.
+
+Validation Summary
+
+Authenticity: Since Bob successfully verified the signature using Alice's Public Key, he knows for certain that the message originated from Alice (or someone who stole her key).
+
+Integrity: Bob also calculates his own hash of the received message. If it matches the hash he decrypted from the signature, he knows the message was not changed by even a single bit during transit.
